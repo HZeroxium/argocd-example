@@ -1,3 +1,4 @@
+# application.yaml
 apiVersion: argoproj.io/v1alpha1 # Specifies the API version of the ArgoCD Application resource.
 kind: Application # Defines the kind of resource, which is an ArgoCD Application.
 metadata:
