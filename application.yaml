@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1 # Specifies the API version of the ArgoCD Application resource.
+kind: Application # Defines the kind of resource, which is an ArgoCD Application.
+metadata:
+  name: myapp-argo-application # The name of the ArgoCD Application.
+  namespace: argocd # The namespace where the ArgoCD Application resides.
+spec:
+  project: default # The ArgoCD project this application belongs to.
+
+  source:
+    repoURL: https://gitlab.com/nanuchi/argocd-app-config.git # The Git repository URL containing the application manifests.
+    targetRevision: HEAD # The branch, tag, or commit to sync from (HEAD refers to the latest commit on the default branch).
+    path: dev # The path within the repository where the application manifests are located.
+  destination:
+    server: https://kubernetes.default.svc # The Kubernetes cluster API server where the application will be deployed.
+    namespace: myapp # The namespace in the cluster where the application will be deployed.
+
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true # Automatically create the namespace if it does not exist.
+
+    automated:
+      selfHeal: true # Automatically correct any drift between the desired and live state of the application.
+      prune: true # Automatically delete resources that are no longer defined in the source manifests.
