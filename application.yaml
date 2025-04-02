@@ -7,7 +7,7 @@ spec:
   project: default # The ArgoCD project this application belongs to.
 
   source:
-    repoURL: https://gitlab.com/nanuchi/argocd-app-config.git # The Git repository URL containing the application manifests.
+    repoURL: https://github.com/HZeroxium/argocd-example.git # The Git repository URL containing the application manifests.
     targetRevision: HEAD # The branch, tag, or commit to sync from (HEAD refers to the latest commit on the default branch).
     path: dev # The path within the repository where the application manifests are located.
   destination:
